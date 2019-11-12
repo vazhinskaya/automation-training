@@ -1,10 +1,18 @@
+*.md  
 *.db
-
-*.txt
-
-
 *.log
 
-/target
+*.iml
+
+.idea/
 
 /bin
+
+
+out/
+target/
+
+
+
+
+
