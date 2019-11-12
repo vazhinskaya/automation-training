@@ -53,8 +53,4 @@ public class TriangleTest {
         assertFalse(Triangle.isTriangleExists(-5, 6, 9.7));
     }
 
-
-    @Test
-    public void isTriangleExists() {
-    }
 }
