@@ -22,7 +22,7 @@ public class CarPage extends AbstractPage {
         PageFactory.initElements(this.driver, this);
     }
 
-    @FindBy(xpath = "//div[@class='et-preferred-result et-preferred-result--economy']")
+    @FindBy(xpath = "//div[@class='et-preferred-result result--economy']")
     private WebElement rentalLocationInfo;
 
 
@@ -38,3 +38,5 @@ public class CarPage extends AbstractPage {
         return rentalLocationInfo.getText();
     }
 }
+
+

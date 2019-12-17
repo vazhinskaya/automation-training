@@ -22,6 +22,7 @@ public class CarBookingCreator {
     public static final String TESTDATA_SAME_TIME = "testdata.sametime";
     public static final String TESTDATA_PICK_UP_LOCATION_TO_CHANGE = "testdata.rental.location.to_change";
     public static final String TESTDATA_RETURN_LOCATION = "testdata.return.location";
+    public static final String TESTDATA_CASE_4_EXPECTED_CURRENCY = "testdata.case4.expected.currency";
 
 
     public static CarBooking withRentalLocation() {

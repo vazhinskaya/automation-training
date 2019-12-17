@@ -21,25 +21,25 @@ public class MainPage extends AbstractPage {
     private static final Logger logger = LogManager.getLogger(MainPage.class);
     private final String MainPage_URL = "https://www.easyterra.com/";
 
-    @FindBy(xpath = "// div[@class='et-location-input__input ng-pristine ng-valid ng-not-empty ng-touched et-location-input__input--invisible']")
+    @FindBy(xpath = "// div[@class='et-location-input_ et-location-input__input--invisible']")
     private WebElement rentalLocation;
 
-    @FindBy(xpath = "// div[@class='et-location-input__input ng-valid ng-dirty ng-valid-parse ng-empty ng-touched']")
+    @FindBy(xpath = "// div[@class='et-location-input_ng-touched']")
     private WebElement returnLocation;
 
-    @FindBy(xpath = "//div[@class='et-date-input__element ng-pristine ng-valid ng-not-empty ng-touched']")
+    @FindBy(xpath = "//div[@class='et-date-input ng-not-empty ng-touched']")
     private WebElement rentalDate;
 
-    @FindBy(xpath = "//div[@class='et-time-input__element']")
+    @FindBy(xpath = "//div[@class='et-time-input']")
     private WebElement rentalTime;
 
-    @FindBy(xpath = "//div[@class='et-date-input__element ng-pristine ng-valid ng-not-empty ng-touched']")
+    @FindBy(xpath = "//div[@class='et-date-input']")
     private WebElement returnDate;
 
-    @FindBy(xpath = "//div[@ class='et-time-input__element']")
+    @FindBy(xpath = "//div[@ class='et-time-input']")
     private WebElement returnTime;
 
-    @FindBy(xpath = "//button[@class='et-search-query__submit et-btn et-btn--submit']")
+    @FindBy(xpath = "//button[@class='et-search-query__submit']")
     private WebElement selectCar;
 
    public MainPage(WebDriver driver) {
@@ -55,56 +55,51 @@ public class MainPage extends AbstractPage {
         return this;
     }
 
+
+
     public MainPage inputRentalLocation(String picLoc) {
         rentalLocation.sendKeys(picLoc);
         rentalLocation.sendKeys(picLoc);
+        logger.info("Filled in rental field");
         return this;
     }
 
+
     public MainPage inputReturnLocation(String returnLoc) {
         returnLocation.sendKeys(returnLoc);
+        logger.info("Filled in return field");
         return this;
     }
 
     public MainPage inputRentalDate(LocalDate picDate) {
         rentalDate.clear();
         rentalDate.sendKeys(picDate.format(DATA_FORMATTER));
+        logger.info("Filled in the rental date field");
         return this;
     }
 
     public MainPage inputReturnDate(LocalDate dropDate) {
         returnDate.clear();
         returnDate.sendKeys(dropDate.format(DATA_FORMATTER));
+        logger.info("Completed return date field");
         return this;
     }
 
     public MainPage selectCar() {
         selectCar.click();
+        logger.info("Car selected");
         return this;
     }
 
     public MainPage selectRentalTime(LocalTime picTime) {
         new Select(rentalTime).selectByVisibleText(picTime.format(TIME_FORMATTER));
+        logger.info("Rental time selected");
         return this;
     }
 
     public MainPage selectReturnTime(LocalTime dropTime) {
         new Select(returnTime).selectByVisibleText(dropTime.format(TIME_FORMATTER));
+        logger.info("Return time selected");
         return this;
-    }
-
-    public String getErrorMessage() {
-        return new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='col-lg-12 res-PageError']")))
-                .getText();
-    }
-
-    public CarPage CarBooking(test.java.model.CarBooking CarBooking) {
-        inputRentalLocation(CarBooking.getRentalLocation())
-                .inputRentalDate(CarBooking.getDateNow().plusDays(1))
-                .inputReturnDate(CarBooking.getDateNow().plusDays(2))
-                .selectCar();
-        logger.log(Level.INFO, "Car page performed");
-        return new CarPage(driver);
     }
 }
