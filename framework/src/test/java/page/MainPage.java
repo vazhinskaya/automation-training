@@ -60,14 +60,14 @@ public class MainPage extends AbstractPage {
     public MainPage inputRentalLocation(String picLoc) {
         rentalLocation.sendKeys(picLoc);
         rentalLocation.sendKeys(picLoc);
-        logger.info("Filled in rental field");
+        logger.info("Filled in rental field with" + picLoc);
         return this;
     }
 
 
     public MainPage inputReturnLocation(String returnLoc) {
         returnLocation.sendKeys(returnLoc);
-        logger.info("Filled in return field");
+        logger.info("Filled in return field with" + returnLoc);
         return this;
     }
 
